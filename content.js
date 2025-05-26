@@ -7,9 +7,9 @@ browser.runtime.onMessage.addListener((message) => {
 				type: "PROCESS_SAVE",
 				data: {
 					word: selection,
-					context: window.getSelection().anchorNode.textContent.slice(0, 100)
 				}
 			}).catch(console.error);
 		}
+		console.log('aaaa')
 	}
 });

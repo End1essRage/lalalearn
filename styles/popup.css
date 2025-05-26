@@ -1,21 +1,46 @@
-.container {
-	width: 300px;
+/* Стили для попапа */
+body {
+	width: 350px;
 	padding: 15px;
 	font-family: Arial, sans-serif;
 }
 
 .card {
-	background: #f5f5f5;
-	border-radius: 4px;
-	padding: 10px;
-	margin: 8px 0;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 15px;
+	margin: 10px 0;
+	transition: all 0.3s;
+	background: #fff;
+}
+
+.card:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+}
+
+.word {
+	font-size: 18px;
+	font-weight: bold;
+	color: #1a73e8;
+}
+
+.translation {
+	color: #5f6368;
+	margin-top: 8px;
+	display: none;
+}
+
+.card:hover .translation {
+	display: block;
 }
 
 #clear-storage {
-	margin-top: 15px;
-	background: #ff4444;
+	background: #dc3545;
 	color: white;
 	border: none;
-	padding: 8px 12px;
+	padding: 8px 16px;
+	border-radius: 4px;
 	cursor: pointer;
+	float: right;
 }

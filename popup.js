@@ -10,13 +10,16 @@ function loadCards() {
 	browser.storage.local.get('flashcards')
 		.then(result => {
 			const cards = result.flashcards || [];
-			const list = document.getElementById('cards-list');
+			console.log('cards = ', cards)
+			const list = document.getElementById('cards-container');
 			list.innerHTML = cards.map(card => `
-        <div class="card">
-          <h3>${card.word}</h3>
-          <p>${card.context}</p>
-        </div>
-      `).join('');
+		<div class="card">
+			<h3>${card.word}</h3>
+			<div class="translation">${card.translation}</div>
+		</div>
+		`).join('');
 		})
 		.catch(console.error);
 }
+
+
