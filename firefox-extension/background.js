@@ -25,7 +25,11 @@ browser.menus.onClicked.addListener(async (info, tab) => {
 				id: Date.now()
 			});
 
+			Bot.sendCard(word, translation)
+
 			console.log('Успешно сохранено:', word, translation);
+
+			//sync to bot
 		} catch (error) {
 			console.error('Ошибка сохранения:', error);
 		}

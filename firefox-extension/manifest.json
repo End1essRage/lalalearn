@@ -14,11 +14,12 @@
 		"storage",
 		"activeTab",
 		"<all_urls>",
-		"https://translate.googleapis.com/*"
+		"https://translate.googleapis.com/*",
+		"http://localhost:8080/*"
 	],
 	"browser_action": {
 		"default_title": "Flashcards",
-		"default_popup": "popup.html",
+		"default_popup": "popup/popup.html",
 		"default_icon": {
 			"32": "icons/icon32.png"
 		}
@@ -26,6 +27,7 @@
 	"background": {
 		"scripts": [
 			"translator.js",
+			"bot.js",
 			"background.js"
 		]
 	},
