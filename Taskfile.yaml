@@ -1,0 +1,16 @@
+version: "3"
+tasks:
+  # Запуск всех сервисов через Docker Compose
+  up:
+    desc: Start Redis, MongoDB, and the bot
+    cmds:
+      - docker-compose up -d --build
+    env:
+      BOT_TOKEN: "{{.BOT_TOKEN}}"
+      MONGO_PWD: "{{.MONGO_PWD}}"
+
+  # Остановка всех сервисов
+  down:
+    desc: Stop all services
+    cmds:
+      - docker-compose down

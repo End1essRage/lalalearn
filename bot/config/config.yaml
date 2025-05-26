@@ -1,0 +1,68 @@
+# приоритет в обработке сообщения: форма -> роль-фильтр -> interceptors -> обработка
+bot:
+  mode: "polling"
+  allow_group: false
+  is_admin: false #админ группы, бот без имени постит там вот это все
+  debug: true
+  roles: false
+
+# api
+api:
+  address: ":8080"
+  endpoints:
+    - path: "/status"
+      method: "GET"
+      script: "status.lua"
+    - path: "/save-word"
+      method: "POST"
+      scheme: "save-word-request"
+      script: "save-word.lua"
+    - path: "/get-words"
+      method: "GET"
+      scheme: "get-words-request"
+      script: "get-words.lua"
+  schemes:
+    - name: "save-word-request"
+      fields:
+        - name: "user_name"
+          type: "string"
+          required: true
+          source: "body"
+        - name: "word"
+          type: "string"
+          required: true
+          source: "body"
+        - name: "translation"
+          type: "string"
+          required: true
+          source: "body"
+    - name: "get-words-request"
+      fields:
+        - name: "user_name"
+          type: "string"
+          required: true
+          source: "query"
+
+# сторонние сервисы
+cache:
+  type: "memory" # или "redis"
+
+storage:
+  type: "file" # или "mongo"
+  file:
+    path: "./data"
+
+#возможность переключиться на пользовательский режим хранение в ключе кэша
+commands:
+  - name: "start"
+    description: "Приветствие"
+    script: "welcome.lua"
+    role: "all"
+  - name: "training"
+    description: "начать тренировку"
+    script: "training.lua"
+    role: "all"
+  - name: "words"
+    description: "получение списка слов"
+    script: "get-words.lua"
+    role: "all"
